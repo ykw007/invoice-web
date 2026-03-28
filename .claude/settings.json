@@ -1,17 +1,6 @@
 {
   "enabledMcpjsonServers": ["playwright","sequential-thinking","context7"],
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo \"테스트 훅!\" >> ./hook-test.txt"
-          }
-        ]
-      }
-    ],
     "PermissionRequest": [
       {
         "hooks": [
