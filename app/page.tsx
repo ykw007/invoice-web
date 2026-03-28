@@ -1,18 +1,9 @@
-import { MainLayout } from "@/components/layout/main-layout";
-import { HeroSection } from "@/components/demo/hero-section";
-import { FeatureCards } from "@/components/demo/feature-cards";
-import { ComponentsShowcase } from "@/components/demo/components-showcase";
-import { ColorPalette } from "@/components/demo/color-palette";
-import { TypographyShowcase } from "@/components/demo/typography-showcase";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
-  return (
-    <MainLayout>
-      <HeroSection />
-      <FeatureCards />
-      <ComponentsShowcase />
-      <ColorPalette />
-      <TypographyShowcase />
-    </MainLayout>
-  );
+/**
+ * 루트 경로 접근 시 로그인 페이지로 리다이렉트
+ * 추후 Supabase 세션 확인 후 대시보드로 분기 처리 예정
+ */
+export default function RootPage() {
+  redirect("/login");
 }
