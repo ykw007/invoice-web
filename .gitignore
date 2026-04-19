@@ -52,6 +52,8 @@ hook-test.txt
 
 # Shrimp Task Manager
 /shrimp_data/
+/shrimp_data/memory/
+/shrimp_date/
 
 # Playwright MCP
 /.playwright-mcp/
