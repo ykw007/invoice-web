@@ -49,3 +49,9 @@ hook-test.txt
 
 # MCP 설정
 .mcp.json
+
+# Shrimp Task Manager
+/shrimp_data/
+
+# Playwright MCP
+/.playwright-mcp/
