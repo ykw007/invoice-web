@@ -10,15 +10,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { LayoutDashboard, Package, FileText, Info, Home } from "lucide-react";
+import { FileText, Settings } from "lucide-react";
 
 /** 각 네비게이션 링크에 대응하는 아이콘 */
 const NAV_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-  "/": Home,
-  "/dashboard": LayoutDashboard,
-  "/components": Package,
-  "/docs": FileText,
-  "/about": Info,
+  "/invoices": FileText,
+  "/settings/notion": Settings,
 };
 
 /** 사이드바 레이아웃 컴포넌트 */
@@ -41,14 +38,14 @@ export function Sidebar({ isCollapsed = false, className }: SidebarProps) {
         )}
       >
         {!isCollapsed && (
-          <span className="text-sm font-semibold">Next.js 스타터킷</span>
+          <span className="text-sm font-semibold">Invoice Web</span>
         )}
       </div>
 
       {/* 네비게이션 */}
       <nav className="flex flex-col gap-1 p-2">
         {NAV_LINKS.map((link) => {
-          const Icon = NAV_ICONS[link.href] ?? Package;
+          const Icon = NAV_ICONS[link.href] ?? FileText;
           const isActive = pathname === link.href;
 
           if (isCollapsed) {

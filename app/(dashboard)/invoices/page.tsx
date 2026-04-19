@@ -1,34 +1,39 @@
+"use client";
+
 import { PageHeader } from "@/components/layout/page-header";
+import { SyncButton } from "@/components/invoices/sync-button";
+import { NotionConnectionBanner } from "@/components/invoices/notion-connection-banner";
+import { InvoiceTable } from "@/components/invoices/invoice-table";
+import { useInvoices } from "@/hooks/use-invoices";
 
 /**
  * 견적서 목록 페이지 (F002, F003)
- * - 노션 DB에서 동기화된 견적서 목록 표시
- * - 동기화 버튼, 검색/필터 기능 포함
- *
- * TODO: TanStack Query로 견적서 목록 fetch
- * TODO: DataTable 컴포넌트로 목록 렌더링
- * TODO: 노션 DB 동기화 버튼 구현
- * TODO: 공유 링크 생성 액션 연결
+ * - useInvoices()로 GET /api/invoices 데이터 fetch
+ * - SyncButton으로 노션 동기화
+ * - NotionConnectionBanner: 미연동 시 안내 배너
+ * - InvoiceTable: 로딩/에러/목록 표시
  */
 export default function InvoicesPage() {
+  const { data = [], isLoading, error, refetch } = useInvoices();
+
   return (
     <div className="space-y-6">
       <PageHeader
         title="견적서 목록"
         description="노션 데이터베이스에서 동기화된 견적서를 관리합니다."
+        actions={<SyncButton />}
       />
 
-      {/* TODO: 동기화 버튼 + 검색 영역 */}
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">
-          견적서를 불러오는 중입니다...
-        </p>
-      </div>
+      {/* 노션 미연동 안내 배너 (disconnected일 때만 표시) */}
+      <NotionConnectionBanner />
 
-      {/* TODO: DataTable<Invoice> 렌더링 */}
-      <div className="rounded-lg border border-dashed p-12 text-center text-muted-foreground">
-        견적서 목록이 여기에 표시됩니다.
-      </div>
+      {/* 견적서 목록 테이블 */}
+      <InvoiceTable
+        data={data}
+        isLoading={isLoading}
+        error={error}
+        refetch={refetch}
+      />
     </div>
   );
 }

@@ -11,10 +11,8 @@ export const APP_CONFIG = {
 /** 라우트 상수 */
 export const ROUTES = {
   home: "/",
-  docs: "/docs",
-  components: "/components",
-  examples: "/examples",
-  about: "/about",
+  invoices: "/invoices",
+  settingsNotion: "/settings/notion",
 } as const;
 
 /** 반응형 브레이크포인트 (px) */
@@ -26,11 +24,8 @@ export const BREAKPOINTS = {
   "2xl": 1536,
 } as const;
 
-/** 헤더 네비게이션 링크 */
+/** 사이드바 네비게이션 링크 */
 export const NAV_LINKS: NavLink[] = [
-  { label: "홈", href: ROUTES.home },
-  { label: "컴포넌트", href: ROUTES.components },
-  { label: "예제", href: ROUTES.examples },
-  { label: "문서", href: ROUTES.docs },
-  { label: "소개", href: ROUTES.about },
+  { label: "견적서 목록", href: ROUTES.invoices },
+  { label: "노션 연동", href: ROUTES.settingsNotion },
 ];

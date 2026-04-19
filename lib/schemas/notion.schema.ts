@@ -16,6 +16,7 @@ const notionDatabaseIdSchema = z
 /** 노션 데이터베이스 ID 등록 폼 스키마 */
 export const notionDatabaseSettingSchema = z.object({
   databaseId: notionDatabaseIdSchema,
+  itemsDatabaseId: notionDatabaseIdSchema,
 });
 
 /** 노션 동기화 요청 스키마 */

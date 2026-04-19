@@ -19,6 +19,8 @@ interface DataTableProps<T extends object> {
   data: T[];
   /** 각 행의 고유 식별자로 사용할 키 */
   keyField: keyof T;
+  /** 행 클릭 이벤트 핸들러 */
+  onRowClick?: (row: T) => void;
   className?: string;
 }
 
@@ -29,6 +31,7 @@ export function DataTable<T extends object>({
   columns,
   data,
   keyField,
+  onRowClick,
   className,
 }: DataTableProps<T>) {
   const [sortKey, setSortKey] = useState<keyof T | null>(null);
@@ -105,7 +108,11 @@ export function DataTable<T extends object>({
             </TableRow>
           ) : (
             sortedData.map((row) => (
-              <TableRow key={String(row[keyField])}>
+              <TableRow
+                key={String(row[keyField])}
+                onClick={onRowClick ? () => onRowClick(row) : undefined}
+                className={cn(onRowClick && "cursor-pointer hover:bg-muted/50")}
+              >
                 {columns.map((col) => (
                   <TableCell key={String(col.key)}>
                     {col.render

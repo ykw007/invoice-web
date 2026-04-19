@@ -90,3 +90,4 @@ staleTime: 5 * 60 * 1000
 - `component-reviewer` — 컴포넌트 작성/리팩토링 후
 - `dead-code-detector` — 미사용 코드 탐지
 - `type-auditor` — TypeScript 타입 안전성 감사
+- `ui-markup-specialist` — UI 마크업/스타일링 작업 시 (정적 마크업, Tailwind, Shadcn UI)

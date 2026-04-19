@@ -26,7 +26,7 @@ export const invoiceItemSchema = z.object({
 
 /** 견적서 JSON 데이터 스키마 */
 export const invoiceDataSchema = z.object({
-  title: requiredString("견적서 제목"),
+  invoiceNumber: requiredString("견적서 번호"),
   clientName: requiredString("클라이언트명"),
   clientEmail: z.string().email("올바른 이메일 형식이 아닙니다.").optional(),
   issuedAt: z.string().min(1, "발행일을 입력해주세요."),
@@ -38,7 +38,7 @@ export const invoiceDataSchema = z.object({
     .number()
     .nonnegative("합계 금액은 0원 이상이어야 합니다."),
   note: z.string().optional(),
-  taxIncluded: z.boolean().optional(),
+  taxIncluded: z.boolean(),
 });
 
 /** 공유 링크 생성 요청 스키마 */
